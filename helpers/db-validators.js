@@ -39,16 +39,12 @@ const allowedCollections = async (collection = "", collections = []) => {
 
 const validateProductQuantity = (value, { req }) => {
   const MAX_QUANTITY = 7;
-
   const { product_details } = req.body;
-
   const invalidQuantities = product_details.filter(detail => detail.product_quantity > MAX_QUANTITY);
-
   if (invalidQuantities.length > 0) {
     const errorMessage = `You cannot buy more than ${MAX_QUANTITY} products`;
     throw new Error(errorMessage);
   }
-
   return true;
 };
 
